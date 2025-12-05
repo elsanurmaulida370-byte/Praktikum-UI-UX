@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Picker</title>
+</head>
+<body>
+
+<h2>Pilih Gambar</h2>
+
+<select id="gambar" onchange="tampilGambar()">
+    <option value="">--Pilih Gambar--</option>
+    <option value="bison.jpg">Bison</option>
+    <option value="kucing.jpg">Kucing</option>
+    <option value="gajah.jpg">Gajah</option>
+    <option value="panda.jpg">Panda</option>
+    <option value="serigala.jpg">Serigala</option>
+    <option value="burung.jpg">Burung</option>
+</select>
+
+<br><br>
+
+<img id="preview" width="300">
+
+<script>
+function tampilGambar() {
+    let file = document.getElementById("gambar").value;
+
+    if (file) {
+        document.getElementById("preview").src = "img/" + file;
+        alert("Ini gambar " + file);
+    }
+}
+</script>
+
+</body>
+</html>
