@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Keliling dan Luas Lingkaran</title>
+    </head>
+    <body>
+        <h2>Menghitung Keliling dan Luas Lingkaran</h2>
+
+        <h2>Keliling</h2>
+        <h4>Rumus Keliling = K = 2 x phi x r</h4>
+        <label for="ruas">Ruas</label>
+        <input type="number" id="ruas">
+        <br>
+        <span id="hasil"></span>
+        <button type="button" onclick="hk()">hitung</button>
+        
+        <hr>
+        <br>
+        <h2>Luas</h2>
+        <h4>Rumus Luas = L = phi x r x r</h4>
+        <label for="ruas2">Ruas</label>
+        <input type="number" id="ruas2">
+        <br>
+        <span id="hasil2"></span>
+        <button type="button" onclick="hl()">hitung</button>
+
+        <script>
+            function hk() {
+                let phi = 3.14;
+                let r = document.getElementById("ruas").value;
+                let K = 2 * phi * r;
+                document.getElementById("hasil").innerHTML = "Keliling = " + K;
+            }
+            function hl() {
+                let phi = 3.14;
+                let r = document.getElementById("ruas2").value;
+                let L = phi * r * r;
+                document.getElementById("hasil2").innerHTML = "Luas = " + L;
+            }
+        </script>
+    </body>
+</html>
