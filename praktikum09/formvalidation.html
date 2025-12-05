@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validasi</title>
+    <style>
+        .error { color:red; font-size:14px; }
+        input.errorInput { border:2px solid red; }
+    </style>
+</head>
+<body>
+
+<h2>Form Pemesanan Tiket</h2>
+
+<form id="myForm" onsubmit="return validasi()">
+
+    Nama Pelanggan:<br>
+    <input type="text" id="nama"><br>
+    <span id="errNama" class="error"></span><br>
+
+    Email:<br>
+    <input type="text" id="email"><br>
+    <span id="errEmail" class="error"></span><br>
+
+    Jam Keberangkatan (00.00 - 23.59):<br>
+    <input type="text" id="jam"><br>
+    <span id="errJam" class="error"></span><br>
+
+    Tujuan Keberangkatan:<br>
+    <input type="text" id="tujuan"><br>
+    <span id="errTujuan" class="error"></span><br>
+
+    Jumlah Tiket (1 - 10):<br>
+    <input type="number" id="tiket"><br>
+    <span id="errTiket" class="error"></span><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<h3 id="hasil"></h3>
+
+<script>
+function validasi() {
+    let nama = document.getElementById("nama");
+    let email = document.getElementById("email");
+    let jam = document.getElementById("jam");
+    let tujuan = document.getElementById("tujuan");
+    let tiket = document.getElementById("tiket");
+
+    let valid = true;
+
+    // Reset error
+    document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+    document.querySelectorAll("input").forEach(i => i.classList.remove("errorInput"));
+
+    // Nama
+    if (nama.value === "" || nama.value.length > 30) {
+        document.getElementById("errNama").innerHTML = "Nama wajib & max 30 karakter";
+        nama.classList.add("errorInput");
+        valid = false;
+    }
+
+    // Email format
+    let polaEmail = /\S+@\S+\.\S+/;
+    if (!polaEmail.test(email.value)) {
+        document.getElementById("errEmail").innerHTML = "Format email salah";
+        email.classList.add("errorInput");
+        valid = false;
+    }
+
+    // Jam (00.00 - 23.59)
+    let polaJam = /^([01]\d|2[0-3])\.[0-5]\d$/;
+    if (!polaJam.test(jam.value)) {
+        document.getElementById("errJam").innerHTML = "Format jam salah";
+        jam.classList.add("errorInput");
+        valid = false;
+    }
+
+    // Tujuan required
+    if (tujuan.value === "") {
+        document.getElementById("errTujuan").innerHTML = "Tujuan wajib diisi";
+        tujuan.classList.add("errorInput");
+        valid = false;
+    }
+
+    // Tiket (1-10)
+    if (tiket.value < 1 || tiket.value > 10) {
+        document.getElementById("errTiket").innerHTML = "Jumlah tiket 1 - 10";
+        tiket.classList.add("errorInput");
+        valid = false;
+    }
+
+    // Jika valid tampilkan data
+    if (valid) {
+        document.getElementById("hasil").innerHTML =
+            "Nama: " + nama.value +
+            "<br>Email: " + email.value +
+            "<br>Jam: " + jam.value +
+            "<br>Tujuan: " + tujuan.value +
+            "<br>Tiket: " + tiket.value;
+
+        return false;
+    }
+
+    return false;
+}
+</script>
+</body>
+</html>
