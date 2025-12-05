@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kurs Rupiah</title>
+</head>
+<body>
+    <h2>Kurs Rupiah - Mata Uang Asing</h2>
+
+    Masukkan Nilai Asing: 
+    <input type="number" id="nilai"><br><br>
+
+    Pilih Valas:
+    <select id="valas" onchange="konversi()">
+        <option value="">--Pilih--</option>
+        <option value="9915">Dollar US</option>
+        <option value="13472">Dollar Singapore</option>
+        <option value="874">Ringgit Malaysia</option>
+        <option value="120">Yen Jepang</option>
+        <option value="15888">Euro</option>
+        <option value="3592">Riyal Arab Saudi</option>
+    </select><br><br>
+
+    Nilai Rupiah: 
+    <input type="text" id="rupiah" readonly>
+
+    <script>
+        function konversi() {
+            let nilai = document.getElementById("nilai").value;
+            let kurs = document.getElementById("valas").value;
+
+            if (nilai && kurs) {
+                document.getElementById("rupiah").value = nilai * kurs;
+            }
+        }
+    </script>
+</body>
+</html>
